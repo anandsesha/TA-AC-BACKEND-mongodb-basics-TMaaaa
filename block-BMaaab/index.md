@@ -39,8 +39,18 @@ Run these shell commands in mongo shell:
 Write code to
 
 - create a database of your country name.
+  test> use india
+  switched to db india
 
 - check list of databases to see newly created database.
+  india> db.createCollection('Mumbai')
+  { ok: 1 }
+
+india> show dbs
+admin 40.00 KiB
+config 108.00 KiB
+india 8.00 KiB // shows created db now!
+local 40.00 KiB
 
 - check which database you are currently connected to ?
   test> db.getName()
