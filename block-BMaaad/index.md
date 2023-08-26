@@ -20,44 +20,27 @@ Write code to:-
   switched to db weather
 
 - create a capped collection named `temperature` with maximum of 3 documents and try inserting more than 3 to see the result.
-  weather> db.createCollection('temprature',3)
+  weather> db.createCollection('sound',{capped: true, size: 1024, max: 3})
   { ok: 1 }
   weather> show collections
+  sound
   temprature
-
-weather> db.temprature.insert({temp: 23})
-{
-acknowledged: true,
-insertedIds: { '0': ObjectId("64ea64f358ef41669adad32d") }
-}
-weather> db.temprature.find()
-[
-{ _id: ObjectId("64ea64c058ef41669adad32c"), temp: 21 },
-{ _id: ObjectId("64ea64f358ef41669adad32d"), temp: 23 }
-]
-weather> db.temprature.insert({temp: 28})
-{
-acknowledged: true,
-insertedIds: { '0': ObjectId("64ea64f958ef41669adad32e") }
-}
-weather> db.temprature.find()
-[
-{ _id: ObjectId("64ea64c058ef41669adad32c"), temp: 21 },
-{ _id: ObjectId("64ea64f358ef41669adad32d"), temp: 23 },
-{ _id: ObjectId("64ea64f958ef41669adad32e"), temp: 28 }
-]
-weather> db.temprature.insert({temp: 32})
-{
-acknowledged: true,
-insertedIds: { '0': ObjectId("64ea64fe58ef41669adad32f") }
-}
-weather> db.temprature.find()
-[
-{ _id: ObjectId("64ea64c058ef41669adad32c"), temp: 21 },
-{ _id: ObjectId("64ea64f358ef41669adad32d"), temp: 23 },
-{ _id: ObjectId("64ea64f958ef41669adad32e"), temp: 28 },
-{ _id: ObjectId("64ea64fe58ef41669adad32f"), temp: 32 }
-]
+  weather> db.sound.insertMany([{a: 1},{b: 2},{c: 3},{d: 4}])
+  {
+  acknowledged: true,
+  insertedIds: {
+  '0': ObjectId("64ea6fe558ef41669adad334"),
+  '1': ObjectId("64ea6fe558ef41669adad335"),
+  '2': ObjectId("64ea6fe558ef41669adad336"),
+  '3': ObjectId("64ea6fe558ef41669adad337")
+  }
+  }
+  weather> db.sound.find()
+  [
+  { _id: ObjectId("64ea6fe558ef41669adad335"), b: 2 },
+  { _id: ObjectId("64ea6fe558ef41669adad336"), c: 3 },
+  { _id: ObjectId("64ea6fe558ef41669adad337"), d: 4 }
+  ]
 
 - create a simple collection named `humidity`
   weather> db.createCollection('humidity')
@@ -67,7 +50,8 @@ weather> db.temprature.find()
   temprature
 
 - check whether `temperature` collection is capped or not ?
-
+  > db.temperature.isCapped()
+  > true
 - Delete `humidity` collection and then the entire database(weather).
   weather> db.humidity.drop()
   true
