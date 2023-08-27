@@ -69,95 +69,107 @@ tags: ['NodeJS', 'mongoDB'],
 
 blog> db.articles.insterMany(articlesArray)
 
-4. Find all the articles using `db.COLLECTION_NAME.find()`
-   blog> db.articles.find().pretty()
-   [
-   {
-   \_id: '003',
-   title: 'Article-3',
-   date: 2021,
-   details: 'Reptiles',
-   author: { name: 'kb', email: 'kb@gmail.com', age: 30 },
-   tags: [ 'React', 'Express' ]
-   },
-   {
-   \_id: '002',
-   title: 'Article-2',
-   date: 2022,
-   details: 'Mamals',
-   author: { name: 'Arvind', email: 'arv@gmail.com', age: 24 },
-   tags: [ 'HTML', 'css' ]
-   },
-   {
-   \_id: '001',
-   title: 'Article-1',
-   date: 2023,
-   details: 'Birds',
-   author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
-   tags: [ 'NodeJS', 'mongoDB' ]
-   }
-   ]
+4.  Find all the articles using `db.COLLECTION_NAME.find()`
+    blog> db.articles.find().pretty()
+    [
+    {
+    \_id: '003',
+    title: 'Article-3',
+    date: 2021,
+    details: 'Reptiles',
+    author: { name: 'kb', email: 'kb@gmail.com', age: 30 },
+    tags: [ 'React', 'Express' ]
+    },
+    {
+    \_id: '002',
+    title: 'Article-2',
+    date: 2022,
+    details: 'Mamals',
+    author: { name: 'Arvind', email: 'arv@gmail.com', age: 24 },
+    tags: [ 'HTML', 'css' ]
+    },
+    {
+    \_id: '001',
+    title: 'Article-1',
+    date: 2023,
+    details: 'Birds',
+    author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
+    tags: [ 'NodeJS', 'mongoDB' ]
+    }
+    ]
 
-5. Find a document using \_id field.
-   blog> db.articles.findOne({\_id: '001'})
-   {
-   \_id: '001',
-   title: 'Article-1',
-   date: 2023,
-   details: 'Birds',
-   author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
-   tags: [ 'NodeJS', 'mongoDB' ]
-   }
+5.  Find a document using \_id field.
+    blog> db.articles.findOne({\_id: '001'})
+    {
+    \_id: '001',
+    title: 'Article-1',
+    date: 2023,
+    details: 'Birds',
+    author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
+    tags: [ 'NodeJS', 'mongoDB' ]
+    }
 
-6. 1. Find documents using title
-      blog> db.articles.find({title: 'Article-3'})
-      [
-      {
-      \_id: '003',
-      title: 'Article-3',
-      date: 2021,
-      details: 'Reptiles',
-      author: { name: 'kb', email: 'kb@gmail.com', age: 30 },
-      tags: [ 'React', 'Express' ]
-      }
-      ]
+6.  1. Find documents using title
+       blog> db.articles.find({title: 'Article-3'})
+       [
+       {
+       \_id: '003',
+       title: 'Article-3',
+       date: 2021,
+       details: 'Reptiles',
+       author: { name: 'kb', email: 'kb@gmail.com', age: 30 },
+       tags: [ 'React', 'Express' ]
+       }
+       ]
 
-7. 2. Find documents using author's name field.
-      blog> db.articles.find({title: 'Article-3'}, {author: {name: 'kb'}})
-      [ { _id: '003', author: { name: 'kb' } } ]
+7.  2.  Find documents using author's name field.
+        <!-- blog> db.articles.find({title: 'Article-3'}, {author: {name: 'kb'}})
+              [ { _id: '003', author: { name: 'kb' } } ] -->
 
-8. Find document using a specific tag.
-   blog> db.articles.find({ tags: { $in: ['css'] } })
-   [
-   {
-   \_id: '002',
-   title: 'Article-2',
-   date: 2022,
-   details: 'Mamals',
-   author: { name: 'Arvind', email: 'arv@gmail.com', age: 24 },
-   tags: [ 'HTML', 'css' ]
-   }
-   ]
+        blog> db.articles.findOne({"author.name" : "Anand"})
 
-9. Update title of a document using its \_id field.
-   blog> db.articles.update({\_id: '001'}, {$set: {title: 'Article-0'}})
-   {
-   acknowledged: true,
-   insertedId: null,
-   matchedCount: 1,
-   modifiedCount: 1,
-   upsertedCount: 0
-   }
+        {
+        \_id: '001',
+        title: 'Article-0',
+        date: 2023,
+        details: 'Birds',
+        author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
+        tags: [ 'NodeJS', 'mongoDB' ],
+        animal: 'Horse'
+        }
 
-   blog> db.articles.findOne({title: 'Article-0'})
-   {
-   \_id: '001',
-   title: 'Article-0',
-   date: 2023,
-   details: 'Birds',
-   author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
-   tags: [ 'NodeJS', 'mongoDB' ]
-   }
+8.  Find document using a specific tag.
+    blog> db.articles.find({ tags: { $in: ['css'] } })
+    [
+    {
+    \_id: '002',
+    title: 'Article-2',
+    date: 2022,
+    details: 'Mamals',
+    author: { name: 'Arvind', email: 'arv@gmail.com', age: 24 },
+    tags: [ 'HTML', 'css' ]
+    }
+    ]
+
+9.  Update title of a document using its \_id field.
+    blog> db.articles.update({\_id: '001'}, {$set: {title: 'Article-0'}})
+    {
+    acknowledged: true,
+    insertedId: null,
+    matchedCount: 1,
+    modifiedCount: 1,
+    upsertedCount: 0
+    }
+
+    blog> db.articles.findOne({title: 'Article-0'})
+    {
+    \_id: '001',
+    title: 'Article-0',
+    date: 2023,
+    details: 'Birds',
+    author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
+    tags: [ 'NodeJS', 'mongoDB' ]
+    }
 
 10. Update a author's name using article's title.
 
@@ -200,10 +212,44 @@ blog> db.articles.insterMany(articlesArray)
 
 11. rename details field to description from all articles in articles collection.
 
-blog> db.articles.find({details: {$exists: true}})
+<!-- blog> db.articles.find({details: {$exists: true}}) -->
+
+<!-- Used $rename below-->
+
+blog> db.articles.update({}, {$rename : {details: "description"}} , {multi: true})
+
+blog> db.articles.find().pretty()
+[
+{
+\_id: '003',
+title: 'Article-3',
+date: 2021,
+author: { name: 'baby' },
+tags: [ 'React', 'Express' ],
+animal: 'Lion',
+description: 'Reptiles'
+},
+{
+\_id: '002',
+title: 'Article-2',
+date: 2022,
+author: { age: 10 },
+tags: [ 'HTML', 'css' ],
+description: 'Mamals'
+},
+{
+\_id: '001',
+title: 'Article-0',
+date: 2023,
+author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
+tags: [ 'NodeJS', 'mongoDB' ],
+animal: 'Horse',
+description: 'Birds'
+}
+]
 
 12. Add additional tag in a specific document.
-    blog> db.articles.update({\_id: '001'}, {$set: {animal: "Horse"}})
+    blog> db.articles.update({\_id: '001'}, {$push: {tags: "Advance React"}})
     {
     acknowledged: true,
     insertedId: null,
@@ -217,26 +263,27 @@ blog> db.articles.find({details: {$exists: true}})
     \_id: '003',
     title: 'Article-3',
     date: 2021,
-    details: 'Reptiles',
     author: { name: 'baby' },
-    tags: [ 'React', 'Express' ]
+    tags: [ 'React', 'Express' ],
+    animal: 'Lion',
+    description: 'Reptiles'
     },
     {
     \_id: '002',
     title: 'Article-2',
     date: 2022,
-    details: 'Mamals',
-    author: { name: 'Arvind', email: 'arv@gmail.com', age: 24 },
-    tags: [ 'HTML', 'css' ]
+    author: { age: 10 },
+    tags: [ 'HTML', 'css' ],
+    description: 'Mamals'
     },
     {
     \_id: '001',
     title: 'Article-0',
     date: 2023,
-    details: 'Birds',
     author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
-    tags: [ 'NodeJS', 'mongoDB' ],
-    animal: 'Horse'
+    tags: [ 'NodeJS', 'mongoDB', 'Advance React' ],
+    animal: 'Horse',
+    description: 'Birds'
     }
     ]
 
@@ -289,7 +336,7 @@ It just puts that replaced value and removes existing fields.
 
 13. find an article using title and increment it's auhtor's age by 5.
 
-blog> db.articles.update({title: 'Article-2'}, {$set: {author: {age: 10}}})
+blog> db.articles.update({title: "Article-2"}, {$inc: {"author.age" : 10}})
 {
 acknowledged: true,
 insertedId: null,
@@ -303,31 +350,35 @@ blog> db.articles.find().pretty()
 \_id: '003',
 title: 'Article-3',
 date: 2021,
-details: 'Reptiles',
 author: { name: 'baby' },
 tags: [ 'React', 'Express' ],
-animal: 'Lion'
+animal: 'Lion',
+description: 'Reptiles'
 },
 {
 \_id: '002',
 title: 'Article-2',
 date: 2022,
-details: 'Mamals',
-author: { age: 10 },
-tags: [ 'HTML', 'css' ]
+author: { age: 30 },
+tags: [ 'HTML', 'css' ],
+description: 'Mamals'
 },
 {
 \_id: '001',
 title: 'Article-0',
 date: 2023,
-details: 'Birds',
 author: { name: 'Anand', email: 'anand@gmail.com', age: 27 },
-tags: [ 'NodeJS', 'mongoDB' ],
-animal: 'Horse'
+tags: [ 'NodeJS', 'mongoDB', 'Advance React' ],
+animal: 'Horse',
+description: 'Birds'
 }
 ]
 
 14. Delete a document using \_id field with `db.COLLECTION_NAME.remove()`.
+    blog> db.articles.drop({"title" : "Article-3"})
+    true
+    blog> db.articles.find().pretty()
+    <!-- Nothing , So removed-->
 
 // Sample data
 
