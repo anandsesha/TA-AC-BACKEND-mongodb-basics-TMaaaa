@@ -1,0 +1,57 @@
+[
+  {
+    "name": "New York City",
+    "location": "USA",
+    "weather": "Temperate",
+    "toDo": [
+      "Visit Times Square",
+      "Explore Central Park",
+      "See the Statue of Liberty"
+    ],
+    "isPopular": true
+  },
+  {
+    "name": "Paris",
+    "location": "France",
+    "weather": "Mild",
+    "toDo": [
+      "Visit the Eiffel Tower",
+      "Explore Louvre Museum",
+      "Stroll along the Seine River"
+    ],
+    "isPopular": true
+  },
+  {
+    "name": "Tokyo",
+    "location": "Japan",
+    "weather": "Temperate",
+    "toDo": [
+      "Explore Shibuya Crossing",
+      "Visit Tokyo Skytree",
+      "Experience Akihabara"
+    ],
+    "isPopular": true
+  },
+  {
+    "name": "Cairo",
+    "location": "Egypt",
+    "weather": "Hot desert",
+    "toDo": [
+      "Visit the Pyramids",
+      "Explore Egyptian Museum",
+      "Cruise the Nile River"
+    ],
+    "isPopular": true
+  },
+  {
+    "name": "Sydney",
+    "location": "Australia",
+    "weather": "Mild",
+    "toDo": [
+      "Visit Sydney Opera House",
+      "Explore Bondi Beach",
+      "Climb the Sydney Harbour Bridge"
+    ],
+    "isPopular": true
+  }
+]
